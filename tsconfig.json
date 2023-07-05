@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2015"],
+    "module": "CommonJS",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./src/",
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "exclude": ["node_modules"],
+  "paths": {
+    "@utils/*": ["./src/utils/*"],
+    "@route/*": ["./src/route/*"],
+    "@controller/*": ["./src/controller/*"],
+    "@model/*": ["./src/model/*"],
+    "@service/*": ["./src/service/*"],
+    "middleware/*": ["./src/middleware/*"],
+    "types/*": ["./src/types/*"]
+  },
+  "include": ["src"]
+}
