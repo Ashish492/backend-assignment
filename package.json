@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@prisma/client": "4.16.2",
+    "@types/validator": "^13.7.17",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -19,12 +20,14 @@
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.0",
     "loadsh": "^0.0.4",
+    "lodash": "^4.17.21",
     "morgan": "^1.10.0",
     "nanoid": "^4.0.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "pino": "^8.11.0",
     "pino-pretty": "^10.0.0",
+    "validator": "^13.9.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
@@ -39,7 +42,7 @@
     "@types/helmet": "^4.0.0",
     "@types/http-errors": "^2.0.1",
     "@types/jsonwebtoken": "^9.0.1",
-    "@types/lodash": "^4.14.191",
+    "@types/lodash": "^4.14.195",
     "@types/morgan": "^1.9.4",
     "@types/nanoid": "^3.0.0",
     "@types/node": "^18.15.3",

@@ -20,6 +20,7 @@ model User {
   updatedAt DateTime @updatedAt
   order Order[]
   status  Status @default(ACTIVE)
+  @@index([email,status])
 }
 model Product {
   id          String      @id @default(uuid())

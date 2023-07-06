@@ -1,4 +1,11 @@
 export {
+	insertProduct,
+	updateProduct,
+	deleteProduct,
+	getProductById,
+	getProducts
+} from "./product.service";
+export {
 	createSession,
 	findSession,
 	updateSession,
@@ -6,7 +13,7 @@ export {
 } from "./session.service";
 export {
 	insertUser,
-	getUsers,
-	removeUser,
-	validatePassword
+	findUserByEmail,
+	validatePassword,
+	removeUserByID
 } from "./user.service";
