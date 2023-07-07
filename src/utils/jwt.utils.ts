@@ -18,3 +18,9 @@ export const verifyJwt = async (token: string) => {
     }
   }
 }
+export const decodedPayload = async (token: string) => {
+  const decoded = await jwt.decode(token, {
+    json: true,
+  })
+  return decoded
+}

@@ -1,5 +1,6 @@
-export {
+export { 
+	default as PassportAuth,
 	initializePassport,
 	auth
 } from "./PassportAuth";
-export { validate } from "./validator";
+export { validate, bodyValidator, getValidateObject } from "./validator";

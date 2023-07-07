@@ -1,7 +1,8 @@
 import { Product, ProductDto } from 'dto'
 import { omit } from 'lodash'
-import { deleteProduct, getProductById, getProducts, insertProduct } from 'service'
+import { deleteProduct, getProductById, getProducts, insertProduct, updateProduct } from 'service'
 import { CustomRouteFunction } from 'types'
+
 export const addProductHandler: CustomRouteFunction<ProductDto> = async (req, res) => {
   const product = await insertProduct(req.body)
   res.json(product)
@@ -9,6 +10,10 @@ export const addProductHandler: CustomRouteFunction<ProductDto> = async (req, re
 export const deleteProductByIdHandler: CustomRouteFunction<unknown, Pick<Product, 'id'>> = async (req, res) => {
   const product = await deleteProduct(req.params.id)
   res.json(omit(product!, ['status']))
+}
+export const updateProductByIdHandler: CustomRouteFunction<ProductDto, Pick<Product, 'id'>> = async (req, res) => {
+  const product = await updateProduct(req.body, req.params.id)
+  res.json(product)
 }
 export const findProductByIdHandler: CustomRouteFunction<unknown, Pick<Product, 'id'>> = async (req, res) => {
   const product = await getProductById(req.params.id)

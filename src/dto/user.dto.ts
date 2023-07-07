@@ -21,5 +21,6 @@ export const UserDtoSchema = userSchema
     message: 'password does not match',
     path: ['rePassword'],
   })
+
 export type User = z.infer<typeof userSchema>
 export type UserDto = z.infer<typeof UserDtoSchema>

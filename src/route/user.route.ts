@@ -1,9 +1,18 @@
-import { Router } from "express";
-import { customRouteFunction } from "../utils";
-import { createUser, deleteUser, getUser } from "../controller";
-import { validate } from "../middleware";
-import { userRequestIdSchema, userRequestSchema } from "../types";
+import { createUserHandler, deleteUser, getUserByEmailHandler } from 'controller'
+import { UserDtoSchema, userSchema } from 'dto'
+import { Router } from 'express'
+import { auth, bodyValidator, getValidateObject, validate } from 'middleware'
+import { customRouteFunction } from 'utils'
 
-export const userRouter=Router()
-userRouter.route("/").post(validate(userRequestSchema) ,customRouteFunction(createUser)).get(customRouteFunction(getUser))
-userRouter.delete("/:id",validate(userRequestIdSchema), customRouteFunction(deleteUser))
+const userRouter = Router()
+userRouter.route('/').post(bodyValidator(UserDtoSchema), customRouteFunction(createUserHandler))
+userRouter.delete(
+  '/:id',
+  auth(),
+  validate(getValidateObject(userSchema.pick({ id: true }))),
+  customRouteFunction(deleteUser)
+)
+userRouter
+  .route('/:email')
+  .get(validate(getValidateObject(userSchema.pick({ email: true }))), customRouteFunction(getUserByEmailHandler))
+export default userRouter

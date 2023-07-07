@@ -1,11 +1,13 @@
 import { Application, NextFunction, Request, Response } from 'express'
 import createHttpError from 'http-errors'
-import { sessionRouter, userRouter } from './route'
+import { order, product, report, user } from 'route'
 
 export default function routes(app: Application) {
-  app.use('/users', userRouter)
-  app.use('/sessions', sessionRouter)
-  app.use((req: Request, res: Response, next: NextFunction) => {
+  app.use('/users', user)
+  app.use('/reports', report)
+  app.use('/product', product)
+  app.use('/order', order)
+  app.use((_req: Request, _res: Response, next: NextFunction) => {
     next(new createHttpError.NotFound())
   })
 }

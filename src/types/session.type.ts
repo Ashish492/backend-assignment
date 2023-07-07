@@ -1,5 +1,6 @@
 import { isValidObjectId } from 'mongoose'
 import { TypeOf, z } from 'zod'
+
 const sessionSchema = z.object({
   userAgent: z.string(),
   user: z.string().refine((user) => isValidObjectId(user)),
@@ -12,7 +13,7 @@ export type sessionRequestBody = TypeOf<typeof sessionRequestBodySchema>
 export const sessionRequestSchema = z.object({ body: sessionRequestBodySchema })
 export type Session = TypeOf<typeof sessionSchema>
 export type JWTPayload = {
-  _id: string
-  session: string
+  id: string
+  email: string
   name: string
 }

@@ -1,22 +1,19 @@
 import createHttpError from 'http-errors'
 import passport from 'passport'
 import { Strategy, StrategyOptions, ExtractJwt } from 'passport-jwt'
-import config from 'config'
-import { SessionModel } from '../model'
+
 import { JWTPayload } from '../types'
+import { findUserByEmail } from 'service'
 const options: StrategyOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: config.get('publicKey'),
+  secretOrKey: process.env.PUBLIC_KEY,
   algorithms: ['RS256'],
 }
 passport.use(
   new Strategy(options, async (payload: JWTPayload, done) => {
     try {
-      const session = await SessionModel.findOne({
-        _id: payload.session,
-        valid: true,
-      })
-      if (session) {
+      const user = await findUserByEmail(payload.email)
+      if (user) {
         return done(null, payload)
       }
       throw new Error()
